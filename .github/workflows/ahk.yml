@@ -1,0 +1,31 @@
+name: Build AHK to EXE
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Install AutoHotkey
+      run: |
+        choco install autohotkey -y
+
+    - name: Compile scripts
+      run: |
+        "C:\Program Files\AutoHotkey\Compiler\Ahk2Exe.exe" /in hotkey.ahk /out hotkey.exe
+        "C:\Program Files\AutoHotkey\Compiler\Ahk2Exe.exe" /in hotkey_0.ahk /out hotkey_0.exe
+
+    - name: Upload EXEs
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiled-exes
+        path: |
+          hotkey.exe
+          hotkey_0.exe
