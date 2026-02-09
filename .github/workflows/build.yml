@@ -17,15 +17,13 @@ jobs:
       run: |
         choco install autohotkey -y
 
-    - name: Compile scripts
+    - name: Compile AHK to EXE
+      shell: cmd
       run: |
-        "C:\Program Files\AutoHotkey\Compiler\Ahk2Exe.exe" /in hotkey.ahk /out hotkey.exe
-        "C:\Program Files\AutoHotkey\Compiler\Ahk2Exe.exe" /in hotkey_0.ahk /out hotkey_0.exe
+        "C:\Program Files\AutoHotkey\Compiler\Ahk2Exe.exe" /in hotkey0_0.ahk /out hotkey0_0.exe
 
-    - name: Upload EXEs
+    - name: Upload EXE
       uses: actions/upload-artifact@v4
       with:
-        name: compiled-exes
-        path: |
-          hotkey.exe
-          hotkey_0.exe
+        name: compiled-exe
+        path: hotkey0_0.exe
