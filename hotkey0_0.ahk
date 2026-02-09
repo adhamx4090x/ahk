@@ -1,9 +1,9 @@
+; hotkey: Ctrl + Alt + P
 ^!p::
-BaseDir := A_ScriptDir "\.."
-Run, %ComSpec% /c "" BaseDir "\run_crush.bat""
+Run, %USERPROFILE%\Documents\guard\run_crush_0.bat
 return
 
+; hotkey: Ctrl + Alt + Q
 ^!q::
-BaseDir := A_ScriptDir "\.."
-Run, %ComSpec% /c "" BaseDir "\run_all.bat""
+Run, %USERPROFILE%\Documents\guard\run_all.bat
 return
